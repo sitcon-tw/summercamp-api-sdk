@@ -7,26 +7,8 @@
     this.getAccessToken = function() {
       return accessToken
     }
-    this.getId = function() {
-      return basicInfo.id
-    }
-    this.getAbout = function() {
-      return basicInfo.about
-    }
-    this.getCoverUrl = function() {
-      return "https://graph.facebook.com/"+basicInfo.cover.id+"/picture"
-    }
-    this.getDescription = function() {
-      return basicInfo.description
-    }
-    this.getLink = function() {
-      return basicInfo.link
-    }
-    this.getName = function() {
-      return basicInfo.name
-    }
-    this.getWebsite = function() {
-      return basicInfo.website
+    this.getImgUrlById = function(Id) {
+      return "https://graph.facebook.com/"+Id+"/picture"
     }
     this.getPosts = function(callback) {
       $.get("https://graph.facebook.com/"+fansPage+"/posts?access_token="+accessToken, function (data){
@@ -53,9 +35,9 @@
         callback && callback(data)
       })
     }
-    this.getInfo(fansPage, function (data){
-      basicInfo = data
-    })
+    this.getSitconInfo = function(callback) {
+      this.getInfo(fansPage, callback)
+    }
   }
   w.FB = new facebook($, f)
 })(window, window.jQuery, "SitconTW")
