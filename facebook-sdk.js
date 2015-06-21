@@ -40,4 +40,4 @@
     }
   }
   w.FB = new facebook($, f)
-})(window, window.jQuery, "SitconTW")
+})(window, window.jQuery, "SITCONtw")
