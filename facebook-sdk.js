@@ -7,21 +7,21 @@
     this.getAccessToken = function() {
       return accessToken
     }
-    this.getImgUrlById = function(Id) {
-      return "https://graph.facebook.com/"+Id+"/picture"
+    this.getImgUrlById = function(id) {
+      return "https://graph.facebook.com/"+id+"/picture"
     }
-    this.getPosts = function(callback) {
-      $.get("https://graph.facebook.com/"+fansPage+"/posts?access_token="+accessToken, function (data){
+    this.getPosts = function(id, callback) {
+      $.get("https://graph.facebook.com/"+id+"/posts?access_token="+accessToken, function (data){
         callback && callback(data)
       })
     }
-    this.getFeed = function(callback) {
-      $.get("https://graph.facebook.com/"+fansPage+"/feed?access_token="+accessToken, function (data){
+    this.getFeed = function(id, callback) {
+      $.get("https://graph.facebook.com/"+id+"/feed?access_token="+accessToken, function (data){
         callback && callback(data)
       })
     }
-    this.getAlbums = function(callback) {
-      $.get("https://graph.facebook.com/"+fansPage+"/albums?access_token="+accessToken, function (data){
+    this.getAlbums = function(id, callback) {
+      $.get("https://graph.facebook.com/"+id+"/albums?access_token="+accessToken, function (data){
         callback && callback(data)
       })
     }
@@ -30,13 +30,30 @@
         callback && callback(data)
       })
     }
-    this.getInfo = function(Id, callback) {
-      $.get("https://graph.facebook.com/"+Id+"?access_token="+accessToken, function (data){
+    this.getInfo = function(id, callback) {
+      $.get("https://graph.facebook.com/"+id+"?access_token="+accessToken, function (data){
         callback && callback(data)
       })
     }
+    this.api = function(path, callback) {
+      $.get("https://graph.facebook.com"+path+"?access_token="+accessToken, function (data){
+        callback && callback(data)
+      })
+    }
+    this.getSitconPosts = function(callback) {
+      this.getPosts(fansPage, callback)
+    }
+    this.getSitconFeed = function(callback) {
+      this.getFeed(fansPage, callback)
+    }
+    this.getSitconAlbums = function(callback) {
+      this.getAlbums(fansPage, callback)
+    }
     this.getSitconInfo = function(callback) {
       this.getInfo(fansPage, callback)
+    }
+    this.whoAmI = function(callback) {
+      this.api("/me", callback)
     }
   }
   w.FB = new facebook($, f)
