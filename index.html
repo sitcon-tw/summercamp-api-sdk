@@ -34,7 +34,7 @@
         $(".website").html("<a href='"+res.website+"'>"+res.about+"</a>")
         $(".description").text(res.description)
       })
-      FB.getAlbums(function (res){
+      FB.getSitconAlbums(function (res){
         var albumId = res.data[res.data.map(function (e){return e.name}).indexOf("Timeline Photos")].id
         FB.getPhotos(albumId, function (res) {
           res.data.forEach(function (photo) {
@@ -42,7 +42,7 @@
           })
         })
       })
-      FB.getPosts(function (res){
+      FB.getSitconPosts(function (res){
         res.data.forEach(function (post) {
           $(".posts").append("<p class='message'>"+post.message.nl2br()+"</p>")
         })
