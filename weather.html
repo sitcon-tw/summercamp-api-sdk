@@ -17,7 +17,7 @@
   <script>
     $(document).ready(function() {
       var w = new OpenWeatherMap()
-      w.getCityWeather(function (res){
+      w.getLocationWeather(function (res){
         $(".country").text("所在位置："+res.sys.country + ", " + res.name)
         $(".weather").text("天氣狀況："+res.weather[0].description)
         $(".temp").text("目前氣溫："+res.main.temp + " ℃")
