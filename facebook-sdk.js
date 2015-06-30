@@ -10,35 +10,25 @@
     this.getImgUrlById = function(id) {
       return "https://graph.facebook.com/"+id+"/picture"
     }
-    this.getPosts = function(id, callback) {
-      $.get("https://graph.facebook.com/"+id+"/posts?access_token="+accessToken, function (data){
+    this.api = function(path, callback) {
+      $.get("https://graph.facebook.com/"+path+"?access_token="+accessToken, function (data){
         callback && callback(data)
       })
+    }
+    this.getPosts = function(id, callback) {
+      this.api(id+"/posts", callback)
     }
     this.getFeed = function(id, callback) {
-      $.get("https://graph.facebook.com/"+id+"/feed?access_token="+accessToken, function (data){
-        callback && callback(data)
-      })
+      this.api(id+"/feed", callback)
     }
     this.getAlbums = function(id, callback) {
-      $.get("https://graph.facebook.com/"+id+"/albums?access_token="+accessToken, function (data){
-        callback && callback(data)
-      })
+      this.api(id+"/albums", callback)
     }
     this.getPhotos = function(albumId, callback) {
-      $.get("https://graph.facebook.com/"+albumId+"/photos?access_token="+accessToken, function (data){
-        callback && callback(data)
-      })
+      this.api(albumId+"/photos", callback)
     }
     this.getInfo = function(id, callback) {
-      $.get("https://graph.facebook.com/"+id+"?access_token="+accessToken, function (data){
-        callback && callback(data)
-      })
-    }
-    this.api = function(path, callback) {
-      $.get("https://graph.facebook.com"+path+"?access_token="+accessToken, function (data){
-        callback && callback(data)
-      })
+      this.api(id, callback)
     }
     this.getSitconPosts = function(callback) {
       this.getPosts(fansPage, callback)
