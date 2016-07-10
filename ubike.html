@@ -21,11 +21,12 @@
   <script>
     $(document).ready(function() {
       ubike.getData(function (res){
-        $(".count").text("站數："+res.retVal.length)
-        $(".sna").text("場站名稱："+res.retVal[0].sna)
-        $(".lat").text("經度："+res.retVal[0].lat)
-        $(".lng").text("緯度："+res.retVal[0].lng)
-        $(".sbi").text("場站的目前車輛數："+res.retVal[0].sbi)
+        res1 = res.retVal[Object.keys(res.retVal)[0]];
+        $(".count").text("站數：" + Object.keys(res.retVal).length)
+        $(".sna").text("場站名稱：" + res1.sna)
+        $(".lat").text("經度：" + res1.lat)
+        $(".lng").text("緯度：" + res1.lng)
+        $(".sbi").text("場站的目前車輛數：" + res1.sbi)
       })
     })
   </script>
