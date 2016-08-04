@@ -3,7 +3,7 @@
     this.hello = "Welcome to SITCON Summer Camp!"
     var lang = "zh_tw"
     var units = "metric"
-    var api = "http://api.openweathermap.org/data/2.5/weather?lang="+lang+"&units="+units
+    var api = "http://api.openweathermap.org/data/2.5/weather?lang="+lang+"&units="+units+"&appid=6c12b939f6a2cf316bae9561a313ce66"
     this.api = function(argv, callback) {
       $.get(api+argv, function (res){
         callback && callback(res)
